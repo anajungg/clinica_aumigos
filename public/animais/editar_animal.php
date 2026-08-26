@@ -50,22 +50,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <main>
-        <h2>Editando o animal <?php echo $prato,["nome"]?>!</h2>
+        <h2>Editando o animal <?php echo $animal["nome"]?>!</h2>
 
         <form action="atualizar_animal.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $prato["id"]?>">
+            <input type="hidden" name="id" value="<?php echo $animal["id"]?>">
 
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="<?php echo $prato["nome"]?>">
+            <input type="text" name="nome" value="<?php echo $animal["nome"]?>">
             <br>
-            <label for="descricao">Espécie:</label>
-            <input type="text" name="especie" value="<?php echo $prato["descricao"]?>">
+            <label for="especie">Espécie:</label>
+            <input type="text" name="especie" value="<?php echo $animal["especie"]?>">
             <br>
-            <label for="preco">Preço:</label>
-            <input type="number" name="preco" value="<?php echo $prato["preco"]?>">
+            <label for="raca">Raça:</label>
+            <input type="text" name="raca" value="<?php echo $animal["raca"]?>">
             <br>
-            <label for="categoria">Categoria:</label>
-            <input type="text" name="categoria" value="<?php echo $prato["categoria"]?>">
+        
+            <label for="cliente_id">Cliente:</label>
+            <select name="cliente_id">
+                <?php while ($cliente = $clientes->fetch_assoc()): ?>
+                    <option value="<?php echo $cliente["id"] ?>" <?php echo $animal["cliente_id"] == $cliente["id"] ? "selected" : "" ?>>
+                        <?php echo $cliente["nome"] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
             <br>
             <button type="submit">Atualizar</button>
         </form>
