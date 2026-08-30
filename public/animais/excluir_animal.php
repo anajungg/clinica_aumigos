@@ -11,3 +11,5 @@ echo "<button type="button" onclick=\"window.location.href='../../index.php'\">V
 } else {
     echo "Erro ao excluir o animal: ". $conn->error;
 }
+
+?>
